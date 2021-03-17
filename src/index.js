@@ -12,16 +12,16 @@ async function handleVersioningByExtension(ext, file, versionPath, releaseType) 
 
   // File type not supported
   if (versioning === null) {
-    throw new Error(`File extension "${ext}" from file "${file}" is not supported`)
+    console.log('File not found, switching to release only.')
   }
-
+  else {
   versioning.init(path.resolve(process.cwd(), file), versionPath)
 
   // Bump the version in the package.json
   await versioning.bump(releaseType)
 
   return versioning
-}
+}}
 
 async function run() {
   try {
